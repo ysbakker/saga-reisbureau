@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-alpine
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+  reisapi:
+    build: ./ReisAPI
+    ports:
+      - '8080:80'
+  ticketservice:
+    build: ./TicketService
+  huurautoservice:
+    build: ./HuurautoService
+  hotelservice:
+    build: ./HotelService
+
+volumes:
+  rabbitmq:
