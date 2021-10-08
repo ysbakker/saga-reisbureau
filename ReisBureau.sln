@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReisAPI", "ReisAPI\ReisAPI.csproj", "{559491B0-889A-4AD5-A20C-41BE343862DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketService", "TicketService\TicketService.csproj", "{92972BA7-41E9-4B05-8A5A-C203B05A6CAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuurautoService", "HuurautoService\HuurautoService.csproj", "{10F20639-A263-4FB8-9976-7FDC4AB3ABF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelService", "HotelService\HotelService.csproj", "{37A5B7A5-0754-43E0-B25D-D84730FC4EC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{559491B0-889A-4AD5-A20C-41BE343862DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{559491B0-889A-4AD5-A20C-41BE343862DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{559491B0-889A-4AD5-A20C-41BE343862DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{559491B0-889A-4AD5-A20C-41BE343862DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92972BA7-41E9-4B05-8A5A-C203B05A6CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92972BA7-41E9-4B05-8A5A-C203B05A6CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92972BA7-41E9-4B05-8A5A-C203B05A6CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92972BA7-41E9-4B05-8A5A-C203B05A6CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10F20639-A263-4FB8-9976-7FDC4AB3ABF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F20639-A263-4FB8-9976-7FDC4AB3ABF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F20639-A263-4FB8-9976-7FDC4AB3ABF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F20639-A263-4FB8-9976-7FDC4AB3ABF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37A5B7A5-0754-43E0-B25D-D84730FC4EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A5B7A5-0754-43E0-B25D-D84730FC4EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A5B7A5-0754-43E0-B25D-D84730FC4EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A5B7A5-0754-43E0-B25D-D84730FC4EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
