@@ -4,10 +4,16 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Common;
+using MongoDB.Driver;
 using Polly;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
+
+MongoClient dbClient = new MongoClient("mongodb://huurautoservice.db:27017");
+
+var database = dbClient.GetDatabase("HuurautoService");
+var collection = database.GetCollection<Message>("reserveringen");
 
 var connectionFactory = new ConnectionFactory() { HostName = "rabbitmq" };
 IConnection connection = null!;
@@ -48,7 +54,7 @@ Thread.Sleep(Timeout.Infinite);
 async Task Execute(Message message)
 {
     Console.WriteLine($"Started executing HuurautoService for {message.Id}");
-    await Task.Delay(1000);
+    await collection.InsertOneAsync(message);
     Console.WriteLine($"Executed HuurautoService for {message.Id}");
     Next(message);
 }
@@ -62,13 +68,13 @@ void Next(Message message)
 async Task Compensate(Message message)
 {
     Console.WriteLine($"Started compensating HuurautoService for {message.Id}");
-    await Task.Delay(1000);
     var rand = new Random();
     if (rand.Next(10) < 7)
     {
         Console.WriteLine($"Compensation of HuurautoService failed for {message.Id}! Retrying...");
         throw new Exception();
     }
+    await collection.DeleteOneAsync(document => document.Id == message.Id);
     Console.WriteLine($"Compensated HuurautoService for {message.Id}");
     Previous(message);
 }

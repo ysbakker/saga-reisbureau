@@ -4,10 +4,16 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Common;
+using MongoDB.Driver;
 using Polly;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
+
+MongoClient dbClient = new MongoClient("mongodb://hotelservice.db:27017");
+
+var database = dbClient.GetDatabase("HotelService");
+var collection = database.GetCollection<Message>("reserveringen");
 
 var connectionFactory = new ConnectionFactory() { HostName = "rabbitmq" };
 IConnection connection = null!;
@@ -48,7 +54,7 @@ Thread.Sleep(Timeout.Infinite);
 async Task Execute(Message message)
 {
     Console.WriteLine($"Started executing HotelService for {message.Id}");
-    await Task.Delay(1000);
+    await collection.InsertOneAsync(message);
     var rand = new Random();
     if (rand.Next(10) < 7) throw new Exception();
     Console.WriteLine($"Executed HotelService for {message.Id}");
@@ -63,7 +69,7 @@ void Next(Message message)
 async Task Compensate(Message message)
 {
     Console.WriteLine($"Started compensating HotelService for {message.Id}");
-    await Task.Delay(1000);
+    await collection.DeleteOneAsync(document => document.Id == message.Id);
     Console.WriteLine($"Compensated HotelService for {message.Id}");
     Previous(message);
 }
