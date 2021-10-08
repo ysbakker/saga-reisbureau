@@ -43,6 +43,12 @@ services:
     image: mongo:5-focal
     volumes:
       - hotelservice.db:/data/db
+  mongo-express:
+    image: mongo-express:latest
+    ports:
+      - '8081:8081'
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=ticketservice.db
 
 volumes:
   rabbitmq:
