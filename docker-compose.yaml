@@ -16,12 +16,36 @@ services:
   ticketservice:
     restart: unless-stopped
     build: ./TicketService
+    depends_on:
+      - ticketservice.db
+  ticketservice.db:
+    restart: unless-stopped
+    image: mongo:5-focal
+    volumes:
+      - ticketservice.db:/data/db
   huurautoservice:
     restart: unless-stopped
     build: ./HuurautoService
+    depends_on:
+      - huurautoservice.db
+  huurautoservice.db:
+    restart: unless-stopped
+    image: mongo:5-focal
+    volumes:
+      - huurautoservice.db:/data/db
   hotelservice:
     restart: unless-stopped
     build: ./HotelService
+    depends_on:
+      - hotelservice.db
+  hotelservice.db:
+    restart: unless-stopped
+    image: mongo:5-focal
+    volumes:
+      - hotelservice.db:/data/db
 
 volumes:
   rabbitmq:
+  ticketservice.db:
+  huurautoservice.db:
+  hotelservice.db:
