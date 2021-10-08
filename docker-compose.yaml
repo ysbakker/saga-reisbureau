@@ -2,18 +2,25 @@ version: '3'
 
 services:
   rabbitmq:
-    image: rabbitmq:3-alpine
+    restart: unless-stopped
+    image: rabbitmq:3-management-alpine
     volumes:
       - rabbitmq:/var/lib/rabbitmq
+    ports:
+      - '15672:15672'
   reisapi:
+    restart: unless-stopped
     build: ./ReisAPI
     ports:
       - '8080:80'
   ticketservice:
+    restart: unless-stopped
     build: ./TicketService
   huurautoservice:
+    restart: unless-stopped
     build: ./HuurautoService
   hotelservice:
+    restart: unless-stopped
     build: ./HotelService
 
 volumes:
